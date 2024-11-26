@@ -1,0 +1,34 @@
+<!-- Directives are used to change dom layout, appearance and structure. -->
+<!-- 1. structural directives -->
+<!-- 2. Attribute directives -->
+<p>1. structural directives works!</p>
+<!-- *ngIf -->
+<!-- *ngFor -->
+<!-- *ngSwitch -->
+
+<div>{{ firstName }}</div>
+
+<div *ngIf="firstName">User is {{ firstName }}</div>
+
+<div *ngIf="showValue; then one; else two"></div>
+
+<ng-template #one>This is first template</ng-template>
+<ng-template #two>This is second template</ng-template>
+
+<p>*ngFor directive</p>
+<div *ngFor="let pName of player">{{ pName }}</div>
+
+<p>*ngSwitch directive</p>
+<!-- <div [ngSwitch]="playerName">
+  <div *ngSwitchCase="'rohit'">rohit selected</div>
+  <div *ngSwitchCase="'virat'">virat selected</div>
+  <div *ngSwitchCase="'dhoni'">dhoni selected</div>
+  <div *ngSwitchDefault>No player selected</div>
+</div> -->
+
+<div [ngSwitch]="playerName">
+  <div *ngFor="let pName of player">
+    <div *ngSwitchCase="pName">{{ pName }} selected</div>
+  </div>
+  <div *ngSwitchDefault>No player selected</div>
+</div>
