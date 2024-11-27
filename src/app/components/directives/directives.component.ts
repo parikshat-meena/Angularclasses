@@ -1,17 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ColordirectiveDirective } from '../../directive/colordirective.directive';
 
 @Component({
   selector: 'app-directives',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ColordirectiveDirective],
   templateUrl: './directives.component.html',
   styleUrl: './directives.component.css',
 })
 export class DirectivesComponent {
   firstName = 'akash';
-  showValue = true;
+  showValue = false;
   player: string[] = ['rohit', 'virat', 'dhoni', 'sachin'];
   playerName = 'sachin';
 
@@ -28,7 +29,7 @@ export class DirectivesComponent {
   };
 
   mydisabledStyle = {
-    color: 'red',
+    color: this.showValue ? 'green' : 'orange',
   };
 
   changeColor() {

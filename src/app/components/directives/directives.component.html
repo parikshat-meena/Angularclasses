@@ -1,7 +1,8 @@
 <!-- Directives are used to change DOM layout, appearance and behaviour. -->
 <!-- 1. structural directives -->
 <!-- 2. Attribute directives -->
-<!-- <p>2. Attribute directives works!</p> -->
+<!-- 3. Custom directives -->
+<!-- <p>1. structural directives works!</p> -->
 <!-- *ngIf -->
 <!-- *ngFor -->
 <!-- *ngSwitch -->
@@ -48,6 +49,10 @@
   this is the ngStyle div
 </div>
 
-<input [(ngModel)]="playerName" />
-<input [(ngModel)]="firstName" />
-<button (click)="onTextChange()">show player name</button>
+<div>
+  <input [(ngModel)]="playerName" />
+  <input [(ngModel)]="firstName" />
+  <button (click)="onTextChange()">show player name</button>
+</div>
+
+<div appColordirective>Custom directive</div>
