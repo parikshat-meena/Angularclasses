@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ColordirectiveDirective } from '../../directive/colordirective.directive';
 
@@ -11,6 +11,10 @@ import { ColordirectiveDirective } from '../../directive/colordirective.directiv
   styleUrl: './directives.component.css',
 })
 export class DirectivesComponent {
+  value = input.required<number>();
+  valueStr = input.required<string>();
+  @Output() emitvalue = new EventEmitter();
+
   firstName = 'akash';
   showValue = false;
   player: string[] = ['rohit', 'virat', 'dhoni', 'sachin'];
@@ -39,5 +43,9 @@ export class DirectivesComponent {
   onTextChange() {
     console.log(this.playerName, 'player name');
     console.log(this.firstName, 'first name');
+  }
+
+  onEmit() {
+    this.emitvalue.emit(10);
   }
 }

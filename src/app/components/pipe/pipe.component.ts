@@ -12,4 +12,14 @@ import { SquarePipe } from '../../pipes/square.pipe';
 export class PipeComponent {
   firstName = 'Mansi';
   date = '12/10/2024';
+
+  str = 'parikshat';
+  s = 'parik';
+  checkSubstring() {
+    console.log(this.str.includes(this.str), 'checking');
+  }
+
+  ngOnInit() {
+    this.checkSubstring();
+  }
 }

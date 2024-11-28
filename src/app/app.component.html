@@ -1,3 +1,9 @@
-<div>app comp works</div>
-<!-- <app-directives></app-directives> -->
-<app-pipe></app-pipe>
+<div>app comp works {{ emitValue }}</div>
+<!-- <app-directives
+  [value]="num"
+  [valueStr]="'some value'"
+  (emitvalue)="saveEmit($event)"
+></app-directives> -->
+<!-- <app-directives ></app-directives> -->
+<!-- <app-pipe ></app-pipe> -->
+<app-parent></app-parent>
