@@ -14,15 +14,29 @@
 <!-- 
 <div>{{ firstName }}</div>
 
+-->
+
 <div *ngIf="firstName">User is {{ firstName }}</div>
 
-<div *ngIf="showValue; then one; else two"></div>
+<!-- <div *ngIf="showValue; then one; else two"></div> -->
+@if (showValue) {
+<div>this is the value : {{ showValue }}</div>
+}@else if(!showValue) {
+<div>this is the value : {{ showValue }}</div>
+}
 
-<ng-template #one>This is first template</ng-template>
-<ng-template #two>This is second template</ng-template>
+<!-- <ng-template #one>This is first template</ng-template>
+<ng-template #two>This is second template</ng-template> -->
 
 <p>*ngFor directive</p>
-<div *ngFor="let pName of player">{{ pName }}</div>
+<!-- <div *ngFor="let pName of player">{{ pName }}</div> -->
+
+<!-- @for(p of player; track p){
+<div>new syntax value : {{ p }}</div>
+} -->
+@for(students of objArr; track students.fname){
+<div>students role : {{ students.role }}</div>
+}
 
 <p>*ngSwitch directive</p>
 <div [ngSwitch]="playerName">
@@ -37,9 +51,9 @@
     <div *ngSwitchCase="pName">{{ pName }} selected</div>
   </div>
   <div *ngSwitchDefault>No player selected</div>
-</div> -->
+</div>
 
-<p>2. Attribute directives works!</p>
+<!-- <p>2. Attribute directives works!</p>
 <div [ngClass]="showValue ? myClass : 'disableText'">
   this is ng Class attribute
 </div>
@@ -57,4 +71,4 @@
 
 <div appColordirective>Custom directive</div>
 <div>{{ value() + " " + valueStr() }}</div>
-<button (click)="onEmit()">emit value</button>
+<button (click)="onEmit()">emit value</button> -->

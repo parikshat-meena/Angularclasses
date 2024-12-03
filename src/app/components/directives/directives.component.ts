@@ -16,8 +16,14 @@ export class DirectivesComponent {
   @Output() emitvalue = new EventEmitter();
 
   firstName = 'akash';
-  showValue = false;
+  showValue = true;
   player: string[] = ['rohit', 'virat', 'dhoni', 'sachin'];
+  objArr = [
+    { fname: 'mansi', role: 'mean developer' },
+    { fname: 'akash', role: 'react developer' },
+    { fname: 'pratiksha', role: 'mern developer' },
+    { fname: 'smrutika', role: 'node developer' },
+  ];
   playerName = 'sachin';
 
   myClass = {

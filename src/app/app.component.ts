@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { DirectivesComponent } from './components/directives/directives.component';
 import { PipeComponent } from './components/pipe/pipe.component';
 import { ParentComponent } from './components/parent/parent.component';
@@ -7,7 +7,7 @@ import { ParentComponent } from './components/parent/parent.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [DirectivesComponent, PipeComponent, ParentComponent],
+  imports: [DirectivesComponent, PipeComponent, ParentComponent, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
