@@ -9,11 +9,13 @@ import { PipeComponent } from './components/pipe/pipe.component';
 import { FormComponent } from './components/form/form.component';
 import { TemplateFormComponent } from './components/template-form/template-form.component';
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
+import { DirectivesComponent } from './components/directives/directives.component';
 
 // routing is used to navigate to different components within the single page application by adding route in browser link
 export const routes: Routes = [
   { path: '', component: LoginComponent }, // default routing
   { path: 'home', component: HomeComponent }, // named routing
+  { path: 'directive', component: DirectivesComponent }, // named routing
   { path: 'parent', component: ParentComponent },
   { path: 'child', component: ChildComponent },
   //   { path: 'pipe', component: PipeComponent },
@@ -36,6 +38,16 @@ export const routes: Routes = [
   {
     path: 'form/:id',
     component: FormComponent,
+    children: [
+      {
+        path: 'utdf',
+        component: TemplateFormComponent,
+      },
+      {
+        path: 'rtf',
+        component: ReactiveFormComponent,
+      },
+    ],
   }, // parameterized routing
   { path: '**', component: PagenotfoundComponent }, // wild routing
 ];

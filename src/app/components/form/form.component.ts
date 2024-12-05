@@ -15,7 +15,13 @@ export class FormComponent {
 
   showValue() {
     this.route.params.subscribe((p) => {
+      // accessing route params
       console.log(p['id']);
+    });
+
+    this.route.queryParamMap.subscribe((ele) => {
+      console.log(ele.get('fname'), 'fname from query');
+      console.log(ele.get('role'), 'role from query');
     });
   }
 }

@@ -1,1 +1,60 @@
-<p>template-form works!</p>
+<!-- utdf - template driven form  - validatiion are in template file 
+rtf - reactive template form - validation are in ts file  -->
+<!-- in utdf, we will use two directives 
+ngModel , ngForm  -->
+
+<!-- visit             ng-touched         ng-untouched -->
+<!-- value change       ng-dirty          ng-pristine -->
+<!-- is valid           ng-valid          ng-invalid  -->
+
+<form class="m-3" #myForm="ngForm" (ngSubmit)="OnSubmit(myForm.value)">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      class="form-control"
+      [(ngModel)]="formData.email"
+      #email="ngModel"
+      minlength="4"
+      required
+    />
+  </div>
+  <!-- one special , one number, one character  , @ 2-3  -->
+  <div *ngIf="email.errors?.['required'] " class="bg-danger">
+    Email is required
+  </div>
+  <div *ngIf="email.errors?.['minlength'] " class="bg-danger">
+    Email should be of 10 letters
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      class="form-control"
+      [(ngModel)]="formData.password"
+      #password="ngModel"
+      minlength="8"
+      maxlength="10"
+      required
+    />
+  </div>
+  <div *ngIf="password.errors?.['minlength']" class="bg-danger">
+    password should be greater than 8 characters
+  </div>
+  <div *ngIf="password.errors?.['required']" class="bg-danger">
+    password is mandatory
+  </div>
+
+  <!-- validations  -->
+  <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">
+    Submit
+  </button>
+</form>
+
+<div *ngIf="isSubmitted" class="alert alert-success">
+  Form Submitted successfully
+</div>

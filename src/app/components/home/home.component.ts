@@ -10,8 +10,11 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class HomeComponent {
   constructor(private router: Router) {}
+  user = { fname: 'akash', role: 'student' };
 
   navtoForm() {
-    this.router.navigate(['/form', 10]);
+    this.router.navigate(['/form', 10], {
+      queryParams: this.user,
+    });
   }
 }
