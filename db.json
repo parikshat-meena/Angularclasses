@@ -25,16 +25,6 @@
   ],
   "user": [
     {
-      "id": "2",
-      "fname": "mansi",
-      "role": "Manager"
-    },
-    {
-      "id": "3",
-      "fname": "vaisnavi",
-      "role": "manager"
-    },
-    {
       "id": "ea5a",
       "fname": "parikshat",
       "role": "trainer"
@@ -43,6 +33,16 @@
       "id": "7a1b",
       "fname": "ayush",
       "role": "tester"
+    },
+    {
+      "id": "8ce2",
+      "fname": "mansi",
+      "role": "Project Manager"
+    },
+    {
+      "id": "83f1",
+      "fname": "sai",
+      "role": "Manager"
     }
   ]
 }

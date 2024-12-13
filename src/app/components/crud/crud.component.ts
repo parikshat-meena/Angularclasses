@@ -56,7 +56,9 @@ export class CrudComponent {
   }
 
   updateData(userData: any) {
-    this.currentUser = userData;
+    this.currentUser.fname = userData.fname;
+    this.currentUser.role = userData.role;
+    this.currentUser.id = userData.id;
     // this.userService.updateUserData(this.currentUser, id).subscribe((res) => {
     //   this.fetchData();
     //   this.resetForm();
