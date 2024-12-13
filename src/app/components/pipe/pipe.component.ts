@@ -51,4 +51,8 @@ export class PipeComponent {
     });
     // console.log(this.actRoute.snapshot.queryParams['ProjetId'], 'project id');
   }
+
+  greetingFunction() {
+    console.log('Greeting from pipe component');
+  }
 }

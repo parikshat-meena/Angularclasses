@@ -1,0 +1,38 @@
+<p>crud works!</p>
+
+<form (ngSubmit)="saveData()" class="container-sm">
+  <input
+    id="fname"
+    class="form-control m-2"
+    [(ngModel)]="currentUser.fname"
+    name="fname"
+    placeholder="enter username"
+  />
+  <input
+    id="role"
+    class="form-control m-2"
+    [(ngModel)]="currentUser.role"
+    name="role"
+    placeholder="enter role"
+  />
+  <button class="btn btn-primary m-2" type="submit">Submit</button>
+</form>
+
+<table class="table table-warning table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>UserName</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userData">
+      <td>{{ user.id }}</td>
+      <td>{{ user.fname }}</td>
+      <td>{{ user.role }}</td>
+      <td><button (click)="updateData(user)">edit</button></td>
+      <td><button (click)="deleteUser(user.id)">delete</button></td>
+    </tr>
+  </tbody>
+</table>

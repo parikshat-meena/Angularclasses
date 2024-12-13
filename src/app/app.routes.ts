@@ -10,6 +10,9 @@ import { FormComponent } from './components/form/form.component';
 import { TemplateFormComponent } from './components/template-form/template-form.component';
 import { ReactiveFormComponent } from './components/reactive-form/reactive-form.component';
 import { DirectivesComponent } from './components/directives/directives.component';
+import { ViewChildComponent } from './components/view-child/view-child.component';
+import { UserComponent } from './components/user/user.component';
+import { CrudComponent } from './components/crud/crud.component';
 
 // routing is used to navigate to different components within the single page application by adding route in browser link
 export const routes: Routes = [
@@ -49,5 +52,8 @@ export const routes: Routes = [
       },
     ],
   }, // parameterized routing
+  { path: 'viewChild', component: ViewChildComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'crud', component: CrudComponent },
   { path: '**', component: PagenotfoundComponent }, // wild routing
 ];

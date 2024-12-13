@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
+  FormBuilder,
   FormControl,
   FormGroup,
   FormsModule,
@@ -17,13 +18,25 @@ import {
   styleUrl: './reactive-form.component.css',
 })
 export class ReactiveFormComponent {
-  myForm = new FormGroup({
-    fname: new FormControl('vaishnavi', [
-      Validators.required,
-      Validators.minLength(3),
-    ]),
-    email: new FormControl('', [Validators.email, Validators.required]),
-  });
+  // myForm = new FormGroup({
+  //   fname: new FormControl('vaishnavi', [
+  //     Validators.required,
+  //     Validators.minLength(3),
+  //   ]),
+  //   email: new FormControl('', [Validators.email, Validators.required]),
+  // });
+
+  // creating reactive form with form builder class
+
+  myForm: FormGroup;
+
+  constructor(private builderObj: FormBuilder) {
+    this.myForm = this.builderObj.group({
+      fname: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.email, Validators.required]],
+      mobileNo: ['', [Validators.pattern('[0-9]{10}')]],
+    });
+  }
 
   OnSubmit() {
     if (this.myForm.valid) {
