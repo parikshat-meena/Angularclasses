@@ -13,14 +13,20 @@ import { DirectivesComponent } from './components/directives/directives.componen
 import { ViewChildComponent } from './components/view-child/view-child.component';
 import { UserComponent } from './components/user/user.component';
 import { CrudComponent } from './components/crud/crud.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { authGuard } from './guards/auth.guard';
 
 // routing is used to navigate to different components within the single page application by adding route in browser link
 export const routes: Routes = [
-  { path: '', component: LoginComponent }, // default routing
-  { path: 'home', component: HomeComponent }, // named routing
-  { path: 'directive', component: DirectivesComponent }, // named routing
-  { path: 'parent', component: ParentComponent },
-  { path: 'child', component: ChildComponent },
+  { path: '', component: CrudComponent }, // default routing
+  { path: 'home', component: HomeComponent, canActivate: [authGuard] }, // named routing
+  {
+    path: 'directive',
+    component: DirectivesComponent,
+    canActivate: [authGuard],
+  }, // named routing
+  { path: 'parent', component: ParentComponent, canActivate: [authGuard] },
+  { path: 'child', component: ChildComponent, canActivate: [authGuard] },
   //   { path: 'pipe', component: PipeComponent },
   { path: 'pipe', redirectTo: 'child' }, // redirect routing
   //   {
@@ -51,9 +57,18 @@ export const routes: Routes = [
         component: ReactiveFormComponent,
       },
     ],
+    canActivate: [authGuard],
   }, // parameterized routing
-  { path: 'viewChild', component: ViewChildComponent },
-  { path: 'user', component: UserComponent },
-  { path: 'crud', component: CrudComponent },
+  {
+    path: 'viewChild',
+    component: ViewChildComponent,
+    canActivate: [authGuard],
+  },
+  { path: 'user', component: UserComponent, canActivate: [authGuard] },
+  { path: 'crud', component: CrudComponent, canActivate: [authGuard] },
+  {
+    path: 'pagination',
+    component: PaginationComponent,
+  },
   { path: '**', component: PagenotfoundComponent }, // wild routing
 ];
