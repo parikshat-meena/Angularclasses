@@ -3,6 +3,7 @@ import { UserDataService } from '../../services/user-data.service';
 import { CommonModule } from '@angular/common';
 import { QuoteDataService } from '../../services/quote-data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GlobalService } from '../../services/global.service';
 
 @Component({
   selector: 'app-user',
@@ -17,7 +18,8 @@ export class UserComponent {
   serverData: any[] = [];
   constructor(
     private userData: UserDataService,
-    private quoteData: QuoteDataService
+    private quoteData: QuoteDataService,
+    private globalservice: GlobalService
   ) {}
 
   loadData() {
@@ -28,6 +30,12 @@ export class UserComponent {
   getServerData() {
     this.userData.fetchUserData().subscribe((userData) => {
       this.serverData = userData;
+    });
+  }
+
+  getDataFromGlobal() {
+    this.globalservice.fetchUserData('attendance').subscribe((res) => {
+      console.log(res, 'res in global services');
     });
   }
 

@@ -18,7 +18,7 @@ import { authGuard } from './guards/auth.guard';
 
 // routing is used to navigate to different components within the single page application by adding route in browser link
 export const routes: Routes = [
-  { path: '', component: CrudComponent }, // default routing
+  { path: '', component: LoginComponent }, // default routing
   { path: 'home', component: HomeComponent, canActivate: [authGuard] }, // named routing
   {
     path: 'directive',
@@ -68,7 +68,15 @@ export const routes: Routes = [
   { path: 'crud', component: CrudComponent, canActivate: [authGuard] },
   {
     path: 'pagination',
-    component: PaginationComponent,
+    // component: PaginationComponent,
+    loadComponent: () =>
+      import('./components/pagination/pagination.component').then(
+        (m) => m.PaginationComponent
+      ), // lazy loading for component
+  },
+  {
+    path: 'customModule',
+    loadChildren: () => import('./crud/crud.module').then((m) => m.CrudModule), // lazy loading for module
   },
   { path: '**', component: PagenotfoundComponent }, // wild routing
 ];

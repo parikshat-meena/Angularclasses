@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LoginUserDataService } from '../../services/login-user-data.service';
+import { Router } from '@angular/router';
+import { GlobalService } from '../../services/global.service';
 
 @Component({
   selector: 'app-pagination',
@@ -28,4 +31,36 @@ export class PaginationComponent {
     { username: 'amy_wright', email: 'amy.wright@example.com' },
     { username: 'david_king', email: 'david.king@example.com' },
   ];
+
+  constructor(
+    private router: Router,
+    private loginUserDataService: LoginUserDataService,
+    private globalservice: GlobalService
+  ) {}
+
+  ngOnInit() {
+    this.getDataFromGlobal();
+  }
+
+  setData() {
+    const user = {
+      username: 'david_king',
+      email: 'david.king@example.com',
+      id: 'ed382',
+    };
+    this.loginUserDataService.saveLoginUser(user);
+    alert(`${user.username} logged in  successfully`);
+    //navigate to home component
+    this.router.navigate(['/pipe']);
+  }
+
+  getDataFromGlobal() {
+    this.globalservice.fetchUserData('attendance').subscribe((res) => {
+      console.log(res, 'res in global services');
+    });
+  }
+
+  updateDataFromGlobal() {
+    this.globalservice.updateUserData('user', this.data[0], '1');
+  }
 }
